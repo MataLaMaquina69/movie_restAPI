@@ -2,7 +2,7 @@
 .c-destacados .card{
     height:100%;
 }
-.c-destacados .card img{
+.c-destacados .card-img{
     height:200px;
     object-fit:cover;
 }

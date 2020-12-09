@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -14,20 +14,38 @@
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark ">
-    <a class="navbar-brand" href="#">
-        <img src="/img/movie_icon.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+    <a class="navbar-brand" th:href="@{/}">
+        <img src="/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+        Movie center
     </a>
+    <form th:action="@{/search}" class="form-inline my-2 my-lg-0" >
+        <input autofocus="autofocus" name="q"  class="form-control mr-sm-2" type="search" th:placeholder="${param.q}" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
 </nav>
-<div class="container mt-4 c-destacados">
-    <div class="card mb-3" style="width: 18rem;">
-        <img src=" " class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Sponge boob </h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+<div  class="container mt-4 c-destacados" >
+    <div class="row">
+        <div class="col-md-3 mb-4" th:each="movie : ${Movies}">
+            <div class="card"  >
+                <img  th:src="${movie.imageUrl}" class="card-img" alt="...">
+                <div class="card-body">
+                    <h5 th:text=" ${movie.name}" class="card-title"> </h5>
+                    <p>
+                        <a th:href="@{/moviesBDirector(directorId=${movie.director.id})}" class="badge badge-warning" th:text="${movie.director.name}"></a>
+                    </p>
+                    <p>
+                        <a th:href="@{/moviesBActor(actorId=${movie.actor.id})}" class="badge badge-warning" th:text="${movie.actor.name}"></a>
+                    </p>
 
-        </div>
-        <div class="card-footer text-muted">
-            <a href="#" class="btn btn-primary">Ver más</a>
+                    <p class="card-text" th:text=" ${movie.description}"> Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    
+
+                </div>
+                <div class="card-footer text-muted">
+                    <a href="#" class="btn btn-primary">Ver más</a>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
