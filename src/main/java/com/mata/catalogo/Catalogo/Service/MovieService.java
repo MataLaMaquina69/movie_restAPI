@@ -19,7 +19,6 @@ public class MovieService {
      }
      public List<Movie> searchByDirector(int directorId){
         return movieRepository.searchByDirector(directorId);
-
      }
 
 
@@ -29,7 +28,10 @@ public class MovieService {
 
     public List<Movie> generalSearch(String query){
         return movieRepository.findByNameContaining(query);
+    }
 
+    public Movie save(Movie movie){
+        return movieRepository.save(movie);
     }
 
 }

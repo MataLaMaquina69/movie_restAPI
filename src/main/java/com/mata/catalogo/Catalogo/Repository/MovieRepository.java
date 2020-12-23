@@ -24,7 +24,11 @@ public interface MovieRepository extends JpaRepository<Movie,Integer> {
 
 //    @Query("from Movie where v.name like %?1%")
 //    List<Movie> genertalSearch(String query);
+
+    //this is a query method where by adding "findBy"
     List<Movie> findByNameContaining(String query);
+
+
 
 
 

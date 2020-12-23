@@ -56,6 +56,8 @@ alter table Movie
 add column director_id int not null,
 add foreign key(director_id) references director(id);
 
+
+
 alter table Movie
 add column actor_id int not null,
 add foreign key(actor_id) references actor(id);
@@ -83,6 +85,11 @@ update movie set actor_id = 8 where id in (4);
 alter table movie
 modify director_id int not null;
 
+
+
 alter table movie
 modify actor_id int not null;
+
+delete from movie where id = 9;
+
 

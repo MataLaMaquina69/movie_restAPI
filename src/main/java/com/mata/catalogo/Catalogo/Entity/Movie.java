@@ -8,7 +8,7 @@ public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
     private String name;
     private String description;
     private String imageUrl;
@@ -38,7 +38,7 @@ public class Movie {
 
 
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -68,5 +68,17 @@ public class Movie {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", director=" + director+
+                ", actor=" + actor +
+                '}';
     }
 }
